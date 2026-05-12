@@ -4,9 +4,9 @@ export class LineChart extends BaseChart {
   draw(data, labels, max, colors) {
     this.clear();
     
-    const chartAreaHeight = this.height - this.margin;
+    const chartAreaHeight = this.height - this.margin - this.marginBottom;
     const step = (this.width - this.margin * 2) / (data.length - 1);
-    const floor = this.height - this.margin;
+    const floor = this.height - this.margin - this.marginBottom;
 
     this.ctx.beginPath();
     this.ctx.strokeStyle = colors[1];
@@ -18,5 +18,7 @@ export class LineChart extends BaseChart {
       i === 0 ? this.ctx.moveTo(x, y) : this.ctx.lineTo(x, y);
     });
     this.ctx.stroke();
+
+    this.drawLegend(labels, colors);
   }
 }

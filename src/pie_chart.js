@@ -7,7 +7,7 @@ export class PieChart extends BaseChart {
     const total = data.reduce((a, b) => a + b, 0);
     let startAngle = 0;
 
-    const chartAreaHeight = this.height - this.margin;
+    const chartAreaHeight = this.height - this.margin - this.marginBottom;
     const centerX = this.width / 2;
     const centerY = chartAreaHeight / 2;
     const radius = Math.min(centerX, centerY) - this.margin;
@@ -21,5 +21,7 @@ export class PieChart extends BaseChart {
       this.ctx.fill();
       startAngle += sliceAngle;
     });
+
+    this.drawLegend(labels, colors);
   }
 }
