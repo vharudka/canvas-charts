@@ -10,15 +10,17 @@ export default class CanvasChart {
   }
 
   render(type, data, labels) {
+    const dataMax = Math.max(...data);
+
     switch (type.toLowerCase()) {
       case 'bar':
-        this.bar.draw(data, labels);
+        this.bar.draw(data, labels, dataMax);
         break;
       case 'line':
-        this.line.draw(data, labels);
+        this.line.draw(data, labels, dataMax);
         break;
       case 'pie':
-        this.pie.draw(data, labels);
+        this.pie.draw(data, labels, dataMax);
         break;
     }
   }
