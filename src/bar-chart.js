@@ -1,7 +1,7 @@
 import { BaseChart } from './base-chart.js';
 
 export class BarChart extends BaseChart {
-  draw(data, labels, max) {
+  draw(data, labels, max, colors) {
     this.clear();
     
     const chartAreaHeight = this.height - this.margin;
@@ -14,7 +14,7 @@ export class BarChart extends BaseChart {
       const x = this.margin + i * columnWidth + 10;
       const y = (this.height - this.margin) - barHeight;
 
-      this.ctx.fillStyle = '#1a7dbb';
+      this.ctx.fillStyle = colors[i];
       this.ctx.fillRect(x, y, barWidth, barHeight);
     });
   }
