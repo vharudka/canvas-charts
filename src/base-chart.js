@@ -8,4 +8,8 @@ export class BaseChart {
     this.width = this.canvas.width;
     this.height = this.canvas.height;
   }
+
+  clear() {
+    this.ctx.clearRect(0, 0, this.width, this.height);
+  }
 }

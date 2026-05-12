@@ -2,6 +2,8 @@ import { BaseChart } from './base-chart.js';
 
 export class PieChart extends BaseChart {
   draw(data, labels, max) {
+    this.clear();
+    
     const total = data.reduce((a, b) => a + b, 0);
     let startAngle = 0;
 

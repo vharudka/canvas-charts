@@ -2,6 +2,8 @@ import { BaseChart } from './base-chart.js';
 
 export class BarChart extends BaseChart {
   draw(data, labels, max) {
+    this.clear();
+    
     const chartAreaHeight = this.height - this.margin;
     const columnWidth = (this.width - this.margin * 2) / data.length;
 
