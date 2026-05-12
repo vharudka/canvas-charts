@@ -1,0 +1,28 @@
+{
+  "name": "canvas-charts",
+  "version": "1.0.0",
+  "description": "A lightweight chart library using Canvas",
+  "main": "canvas-chart.js",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild canvas-chart.js --bundle --outfile=dist/canvas-charts.js --format=esm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vharudka/canvas-charts.git"
+  },
+  "keywords": [
+    "canvas",
+    "charts",
+    "data-visualization"
+  ],
+  "author": {
+    "name": "Vladislav Harudka",
+    "url": "https://github.com/vharudka"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vharudka/canvas-charts/issues"
+  },
+  "homepage": "https://github.com/vharudka/canvas-charts"
+}
