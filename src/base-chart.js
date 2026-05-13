@@ -38,8 +38,8 @@ export class BaseChart {
     }
   }
 
-  drawLegend(labels, colors) {
-    const boxSize = 12;
+  drawLegend(labels, data, colors) {
+    const boxSize = 14;
     const lineHeight = 20;
     const maxLabelChars = 60;
     const maxVisibleChars = maxLabelChars - 3;
@@ -49,7 +49,9 @@ export class BaseChart {
     const startX = 20;
     const startY = this.height - (labels.length * lineHeight) - legendPadding;
 
-    this.ctx.font = '12px Arial';
+    const total = data.reduce((sum, v) => sum + v, 0);
+
+    this.ctx.font = '14px Arial';
     this.ctx.textAlign = 'left';
     this.ctx.textBaseline = 'middle';
 
@@ -59,14 +61,18 @@ export class BaseChart {
       this.ctx.fillStyle = colors[i];
       this.ctx.fillRect(startX, y, boxSize, boxSize);
 
-      this.ctx.fillStyle = '#1d1d1d';
-
       const cleanLabel =
         label.length > maxLabelChars
           ? label.substring(0, maxVisibleChars) + "..."
           : label;
 
-      this.ctx.fillText(cleanLabel, startX + labelOffset, y + boxSize / 2);
+      const value = data[i];
+      const percent = total > 0 ? ((value / total) * 100).toFixed(1) : 0;
+
+      const text = `${cleanLabel} - ${value} (${percent}%)`;
+
+      this.ctx.fillStyle = '#1d1d1d';
+      this.ctx.fillText(text, startX + labelOffset, y + boxSize / 2);
     });
   }
 }

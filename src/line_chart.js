@@ -30,6 +30,6 @@ export class LineChart extends BaseChart {
       this.ctx.fill();
     });
 
-    this.drawLegend(labels, colors);
+    this.drawLegend(labels, data, colors);
   }
 }

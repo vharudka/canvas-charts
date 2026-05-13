@@ -22,12 +22,15 @@ export default class CanvasChart {
     ];
   }
 
-  render(type, data, labels, colors) {
+  render(type, data, labels, colors = []) {
     const limitedData = data.slice(0, 10);
     const limitedLabels = labels.slice(0, 10);
+    const limitedColors = colors.slice(0, 10);
 
     const dataMax = Math.max(...data);
-    const finalColors = colors || this.defaultColors;
+    const finalColors = limitedColors.length > 0
+        ? limitedColors
+        : this.defaultColors;
 
     switch (type.toLowerCase()) {
       case 'bar':

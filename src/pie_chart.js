@@ -19,10 +19,12 @@ export class PieChart extends BaseChart {
       this.ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
       this.ctx.fillStyle = colors[i];
       this.ctx.fill();
+      this.ctx.strokeStyle = '#e0e0e0';
+      this.ctx.lineWidth = 2;
       this.ctx.stroke();
       startAngle += sliceAngle;
     });
 
-    this.drawLegend(labels, colors);
+    this.drawLegend(labels, data, colors);
   }
 }

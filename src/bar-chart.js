@@ -19,6 +19,6 @@ export class BarChart extends BaseChart {
       this.ctx.fillRect(x, y, barWidth, barHeight);
     });
 
-    this.drawLegend(labels, colors);
+    this.drawLegend(labels, data, colors);
   }
 }
