@@ -3,7 +3,7 @@ export class BaseChart {
     this.canvas = document.getElementById(canvasId);
     this.ctx = this.canvas.getContext('2d');
 
-    this.margin = 20;
+    this.margin = 40;
     this.marginBottom = 220;
 
     this.width = this.canvas.width;
@@ -14,6 +14,30 @@ export class BaseChart {
     this.ctx.clearRect(0, 0, this.width, this.height);
   }
 
+  drawGrid(maxVal) {
+    const chartHeight = this.height - this.margin - this.marginBottom;
+    const numLines = 10;
+
+    this.ctx.strokeStyle = '#e0e0e0';
+    this.ctx.lineWidth = 2;
+    this.ctx.fillStyle = '#666';
+    this.ctx.font = '12px Arial';
+    this.ctx.textAlign = 'right';
+    this.ctx.textBaseline = 'middle';
+
+    for (let i = 0; i < numLines; i++) {
+      const y = this.margin + (i * chartHeight / (numLines - 1));
+
+      this.ctx.beginPath();
+      this.ctx.moveTo(this.margin, y);
+      this.ctx.lineTo(this.width - this.margin, y);
+      this.ctx.stroke();
+
+      const labelValue = Math.round(maxVal - (i * maxVal / (numLines - 1)));
+      this.ctx.fillText(labelValue, this.margin - 10, y);
+    }
+  }
+
   drawLegend(labels, colors) {
     const boxSize = 12;
     const lineHeight = 20;
@@ -22,10 +46,11 @@ export class BaseChart {
     const labelOffset = 20;
     const legendPadding = 10;
 
-    const startX = this.margin;
+    const startX = 20;
     const startY = this.height - (labels.length * lineHeight) - legendPadding;
 
     this.ctx.font = '12px Arial';
+    this.ctx.textAlign = 'left';
     this.ctx.textBaseline = 'middle';
 
     labels.forEach((label, i) => {
