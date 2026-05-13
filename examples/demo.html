@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <h1>Voting System Visualizer</h1>
+  <canvas id="voteChart" width="600" height="600"></canvas>
+
+  <div class="controls">
+    <button onclick="draw('bar')">Bar Chart</button>
+    <button onclick="draw('line')">Line Graph</button>
+    <button onclick="draw('pie')">Pie Chart</button>
+  </div>
+
+  <script type="module">
+    import CanvasChart from '../src/canvas-chart.js';
+
+    const chart = new CanvasChart('voteChart');
+
+    const votes = [45, 32, 18, 50, 25];
+    const candidates = ['Pizza', 'Tacos', 'Burgers', 'Salad', 'Sushi'];
+
+    window.draw = function (type) {
+      chart.render(type, votes, candidates);
+    };
+
+    window.draw('bar');
+  </script>
+</body>
+
+</html>

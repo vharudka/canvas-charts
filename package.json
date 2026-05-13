@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/vharudka/canvas-charts/issues"
   },
-  "homepage": "https://github.com/vharudka/canvas-charts"
+  "homepage": "https://github.com/vharudka/canvas-charts",
+  "files": [
+    "src/"
+  ]
 }
