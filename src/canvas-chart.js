@@ -23,18 +23,21 @@ export default class CanvasChart {
   }
 
   render(type, data, labels, colors) {
+    const limitedData = data.slice(0, 10);
+    const limitedLabels = labels.slice(0, 10);
+
     const dataMax = Math.max(...data);
     const finalColors = colors || this.defaultColors;
 
     switch (type.toLowerCase()) {
       case 'bar':
-        this.bar.draw(data, labels, dataMax, finalColors);
+        this.bar.draw(limitedData, limitedLabels, dataMax, finalColors);
         break;
       case 'line':
-        this.line.draw(data, labels, dataMax, finalColors);
+        this.line.draw(limitedData, limitedLabels, dataMax, finalColors);
         break;
       case 'pie':
-        this.pie.draw(data, labels, dataMax, finalColors);
+        this.pie.draw(limitedData, limitedLabels, dataMax, finalColors);
         break;
     }
   }
